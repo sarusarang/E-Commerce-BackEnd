@@ -19,6 +19,8 @@ pfServer.use(express.json())
 // configuring routes into server
 pfServer.use(router)
 
+pfServer.use('/uploads',express.static('./uploads'))
+
 
 const PORT = 3000
 

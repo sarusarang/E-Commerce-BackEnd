@@ -8,31 +8,30 @@ const jwt = require('jsonwebtoken')
 exports.Register = async (req, res) => {
 
 
-
     try {
 
 
-        const {name,email,password} = req.body
+        const { name, email, password } = req.body
 
 
-        const ExistingUser = await UserInfo.findOne({email})
+        const ExistingUser = await UserInfo.findOne({ email })
 
-        if(ExistingUser){
+        if (ExistingUser) {
 
             res.status(401).json("User Already Exist")
 
         }
-        else{
+        else {
 
             const NewUser = new UserInfo({
 
-                name,email,password
+                name, email, password
 
             })
 
             await NewUser.save()
-            const token = jwt.sign({name:NewUser.name,email:NewUser.email,userid:NewUser._id},process.env.Secret_key)
-            const Details = {token, user:NewUser.name ,_id: NewUser._id}
+            const token = jwt.sign({ name: NewUser.name, email: NewUser.email, userid: NewUser._id }, process.env.Secret_key)
+            const Details = { token, user: NewUser.name, _id: NewUser._id }
             res.status(200).json(Details)
 
 
@@ -57,20 +56,20 @@ exports.Login = async (req, res) => {
     try {
 
 
-        const {email,password} = req.body
+        const { email, password } = req.body
 
-        const ExistingUser = await UserInfo.findOne({email,password})
+        const ExistingUser = await UserInfo.findOne({ email, password })
 
-        if(ExistingUser){
+        if (ExistingUser) {
 
 
-            const token = jwt.sign({name:ExistingUser.name , email:ExistingUser.email , _id:ExistingUser._id}, process.env.Secret_key)
-            const Details = {token,user:ExistingUser.name,_id:ExistingUser._id}
+            const token = jwt.sign({ name: ExistingUser.name, email: ExistingUser.email, _id: ExistingUser._id }, process.env.Secret_key)
+            const Details = { token, user: ExistingUser.name, _id: ExistingUser._id }
             res.status(200).json(Details)
 
 
         }
-        else{
+        else {
 
             res.status(406).json("INVAILD USERNAME OR PASSWORD")
 
@@ -86,3 +85,5 @@ exports.Login = async (req, res) => {
     }
 
 }
+
+
