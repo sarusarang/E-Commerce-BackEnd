@@ -2,6 +2,7 @@ const express = require('express')
 const UserController = require('../Controllers/UserController')
 const ProductController = require('../Controllers/ProductController')
 const CartController = require('../Controllers/CartController')
+const OrderController = require('../Controllers/OrderController')
 const multer = require('../Middleware/Multer')
 
 
@@ -41,5 +42,16 @@ router.get('/showcart/:id', CartController.ShowCart)
 router.delete('/deletecart/:id', CartController.RemoveCart)
 
 
+// Place a ORDER 
+router.post('/addorder',OrderController.PlaceOrder)
+
+// Show User order 
+router.get('/userorder/:id',OrderController.UserOrder)
+
+// Cancel User order 
+router.put('/ordercancel/:id',OrderController.CancelOrder)
+
+// all orders
+router.get('/allorder',OrderController.AllOrders)
 
 module.exports = router

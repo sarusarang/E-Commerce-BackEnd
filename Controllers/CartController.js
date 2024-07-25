@@ -9,9 +9,6 @@ exports.AddCart = async (req, res) => {
 
         const { user, product ,name,price ,image,gender,category } = req.body
 
-
-       
-
     
         const existingproduct = await Cart.findOne({ ProductId: product })
 
