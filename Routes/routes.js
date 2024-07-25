@@ -34,11 +34,11 @@ router.post('/addcart', CartController.AddCart)
 
 
 // Show Cart
-router.get('/showcart', CartController.ShowCart)
+router.get('/showcart/:id', CartController.ShowCart)
 
 
 // Delete Cart
-router.delete('/showcart', CartController.RemoveCart)
+router.delete('/deletecart/:id', CartController.RemoveCart)
 
 
 

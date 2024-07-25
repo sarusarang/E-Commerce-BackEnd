@@ -15,7 +15,38 @@ const CartSechma = new mongoose.Schema({
         required: true,
         type: String
 
+    },
+    ProductName: {
+
+        required: true,
+        type: String
+
+    },
+    Price: {
+
+        required: true,
+        type: String
+
+    },
+    Image: {
+
+        required: true,
+        type: String
+
+    },
+    Gender: {
+
+        required: true,
+        type: String
+
+    },
+    Category: {
+
+        required: true,
+        type: String
+
     }
+
 
 })
 
